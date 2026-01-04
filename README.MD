@@ -1,4 +1,4 @@
-# Finishing Odin Project - EAS
+# Finishing Odin Project - Calculator
 
 ## 1 - Operations
 - Calculator contains functions for basic math operators found on avg calculator:

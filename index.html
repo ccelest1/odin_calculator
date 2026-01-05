@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calc4U</title>
     <link rel="stylesheet" href="styles.css">
-    <script type="module" src="src/operations.js"></script>
+    <script type="module" src="src/calc_setup.js"></script>
 </head>
 
 <body>
@@ -20,28 +20,25 @@
             <button class="button button--random-color-change"> Randomize Color</button>
         </div>
         <div class="calculator">
-            <div class="calculator__display">
+            <div class="calculator__display" tabindex="-1">
             </div>
             <div class="calculator__operations_and_numbers">
                 <div class="calculator__operations">
-                    <button class="button button--clear"> Clear </button>
                 </div>
                 <div class="calculator__numbers">
-                    <button class="button button--clear"> 1 </button>
                 </div>
             </div>
         </div>
     </main>
     <footer class="footer">
         <p class="footer__paragraph--name">
-            TC
             <script>
-                document.write(
-                    new Date().getFullYear()
-                )
+                let footer = document.querySelector('.footer__paragraph--name')
+                footer.textContent = `TC ${new Date().getFullYear()}`
             </script>
         </p>
     </footer>
+    <script type="module" src="src/calc_setup.js"></script>
 </body>
 
 </html>

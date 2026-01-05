@@ -1,5 +1,7 @@
 # Finishing Odin Project - Calculator
 
+! Local Dev - `python3 -m hhtp.server 8000`
+
 ## 1 - Operations
 - Calculator contains functions for basic math operators found on avg calculator:
     - `add(), subtract(), multiply(), divide()` [x]

@@ -7,10 +7,11 @@ export class Calculator {
         this.operand = operand;
         this.history = history;
         this.justCalculated = false;
-        this.cleared_count = 0;
+        this.clearedCount = 0;
     }
 
     handleDecimal() {
+        this.clearedCount = 0
         if (
             this.currentNumber.includes(".")
         ) {
@@ -20,19 +21,24 @@ export class Calculator {
     }
 
     handleNumber(num) {
+        this.clearedCount = 0
         if (
-            this.currentNumber === "0" || (this.justCalculated && !this.operand)
+            this.currentNumber === "0"
         ) {
-            this.currentNumber = num
-            this.justCalculated = false
+            if (this.justCalculated && !this.operand) {
+                this.currentNumber = num
+                this.justCalculated = false
+            }
+            if (this.operand === "-") {
+                this.currentNumber = -num
+            }
+
         } else {
             this.currentNumber += num
         }
     }
 
     handleOperand(op) {
-        // factorial
-        // calc ops
         if (
             op === "!"
         ) {
@@ -48,6 +54,9 @@ export class Calculator {
             if (
                 this.operand
             ) {
+                if (this.operand === "-" && !this.previousNumber && this.currentNumber) {
+                    this.currentNumber = -this.currentNumber
+                }
                 if (this.previousNumber && this.currentNumber) {
                     this.history.push(this.previousNumber)
                     this.handleEquals()
@@ -66,7 +75,7 @@ export class Calculator {
         let calcOpsArray = [
             "+", "-", "/", "*", "**"
         ]
-        if(!this.operand){
+        if (!this.operand) {
             return
         }
         let calculation = "0";
@@ -82,10 +91,9 @@ export class Calculator {
             this.history.push(
                 `= ${calculation}`
             )
-
         } else {
             this.history.push(
-                `${this.currentNumber} ${this.operand}`
+                `${this.currentNumber}${this.operand}`
             )
             calculation = calcFactorial(
                 this.currentNumber
@@ -100,16 +108,19 @@ export class Calculator {
         this.operand = null
     }
     clear() {
-        if(!this.cleared_count){
+        if (!this.clearedCount && this.currentNumber !== "0") {
             this.currentNumber = "0"
-            this.cleared_count +=1
+            this.clearedCount += 1
         }
-        if(this.cleared_count && !this.currentNumber){
+        if (this.currentNumber === "0") {
+            this.clearedCount += 1
+        }
+        if (this.clearedCount && this.currentNumber === "0") {
             this.currentNumber = "0"
             this.previousNumber = null
             this.history = []
             this.operand = null
-            this.cleared_count = 0
+            this.clearedCount = 0
         }
     }
 }

@@ -1,5 +1,5 @@
 function calcOperations(num1, num2, method) {
-    let numbers = [num1, num2]
+    let numbers = [Number(num1), Number(num2)]
     switch (method) {
         case ("+"):
             return numbers.reduce((sum, elem) => {

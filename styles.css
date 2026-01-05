@@ -4,16 +4,135 @@
     margin: 0;
 }
 
-.main {
-    display: flex
+body {
+    margin-bottom: 100px;
+    line-height: 1.6;
 }
 
-@media(max-width:1200px) {}
+html {
+    position: relative;
+    min-height: 100%;
+}
 
-@media(max-width:850px) {}
+.header {
+    padding: 10px 0;
+}
+
+.title {
+    text-align: center;
+    font-size: 80px
+}
+
+.button {
+    height: 50px;
+    width: 100px;
+}
+
+.main {
+    display: flex;
+    max-width: 1100px;
+    gap: 10px;
+    margin: 0 auto;
+    background-color: palegreen;
+    justify-content: center;
+}
+
+.main__controls {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    gap: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.calculator {
+    display: flex;
+    gap: 10px;
+    width: 700px;
+    height: 500px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: orchid;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calculator__display {
+    background-color: white;
+    border: 1px solid black;
+    width: 400px;
+    height: 100px;
+    margin-top: 10px;
+}
+
+/*
+.calculator__operations {
+    background-color: black;
+    width: 400px;
+    height: 100px;
+} */
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+}
+
+
+@media(max-width:1200px) {
+    .main {
+        justify-content: center;
+        margin: 0 10px 0 10px;
+    }
+}
+
+@media(max-width:850px) {
+    .main {
+        gap: 50px;
+        margin: 0 10px 0 10px;
+    }
+
+    .calculator {
+        width: 425px;
+        height: 425px;
+    }
+
+    .main__controls {
+        margin-left: 10px;
+    }
+}
 
 @media(max-width:650px) {
+    .title {
+        font-size: 50px;
+    }
+
     .main {
-        flex-direction: column;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        margin: 0 10px 0px 10px;
+    }
+
+    .main__controls {
+        text-align: center;
+    }
+
+    .calculator {
+        width: 325px;
+        height: 500px;
+    }
+
+    .calculator__display {
+        width: 200px;
     }
 }

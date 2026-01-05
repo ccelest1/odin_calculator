@@ -2,7 +2,7 @@
 
 ## 1 - Operations
 - Calculator contains functions for basic math operators found on avg calculator:
-    - `add(), subtract(), multiply(), divide()` [ ]
+    - `add(), subtract(), multiply(), divide()` [x]
 - Calculator Operation
     * Consists of a number, operator, other number `3+5`
     * Three variables created for each operation (display update)

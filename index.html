@@ -4,19 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylsheet" href="styles.css">
-    <script src="src/operations.js" defer></script>
+    <title>Calc4U</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="src/operations.js"></script>
 </head>
 
 <body>
-    <header class="header"></header>
-    <main class="main__div">
-        <div class="main__div main__div--display">
+    <header class="header">
+        <h1 class="title">
+            Calc4U
+        </h1>
+    </header>
+    <main class="main">
+        <div class="main__controls">
+            <button class="button button--clear"> Clear </button>
+            <button class="button button--random-color-change"> Randomize Color</button>
         </div>
-        <div class="main_div main_div--operations">
-        </div>
-        <div class="main_div main_div--numbers">
+        <div class="calculator">
+            <div class="calculator__display">
+            </div>
+            <div class="calculator__operations">
+            </div>
+            <div class="calculator__numbers">
+            </div>
         </div>
     </main>
     <footer class="footer">

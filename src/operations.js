@@ -11,7 +11,7 @@ function calcOperations(num1, num2, method) {
             })
         case ("/"):
             if (num2 === 0) {
-                break
+                return null
             }
             return numbers.reduce((sum, elem) => {
                 return sum / elem
@@ -29,12 +29,13 @@ function calcOperations(num1, num2, method) {
 
 function calcFactorial(num) {
     function returnCalc(current, past) {
-        if (current === 0) {
+        if (past === 0) {
             return current
         }
+
         return returnCalc(current * past, past - 1)
     }
-    return returnCalc(num, 1)
+    return returnCalc(num, num-1)
 }
 
 const add_test = JSON.stringify(calcOperations(
@@ -52,16 +53,23 @@ const multiply_test = JSON.stringify(calcOperations(
 const power_test = JSON.stringify(calcOperations(
     4, 2, "**"
 )) == 16
-const factorial_test = JSON.stringify(calcOperations(
-    5
-)) == 120
+const factorial_test = JSON.stringify(calcFactorial(
+    6
+)) == 720
+
 const tests = [
     add_test,
     subtract_test,
     division_test,
     multiply_test,
-    power_test
+    power_test,
+    factorial_test
 ]
 for (let test of tests) {
     console.assert(test)
 }
+
+export {
+    calcOperations,
+    calcFactorial
+};

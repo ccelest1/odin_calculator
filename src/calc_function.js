@@ -1,4 +1,4 @@
-import { calcFactorial, calcOperations } from "./operations";
+import { calcFactorial, calcOperations } from "./operations.js";
 
 export class Calculator {
     constructor(current = '0', previous = null, operand = null, history = []) {
@@ -8,6 +8,7 @@ export class Calculator {
         this.history = history;
         this.justCalculated = false;
         this.clearedCount = 0;
+        this.len = this.currentNumber.length
     }
 
     handleDecimal() {
@@ -32,12 +33,24 @@ export class Calculator {
             if (this.operand === "-") {
                 this.currentNumber = -num
             }
-
+            if (!this.justCalculated) {
+                this.currentNumber += num
+            }
         } else {
-            this.currentNumber += num
+            if (
+                this.justCalculated && this.currentNumber == this.previousNumber
+            ) {
+                this.currentNumber = num
+            }
+            if (
+                (this.currentNumber != this.previousNumber)
+            ) {
+                console.log('here')
+                this.currentNumber += num
+            }
+
         }
     }
-
     handleOperand(op) {
         if (
             op === "!"
@@ -55,7 +68,7 @@ export class Calculator {
                 this.operand
             ) {
                 if (this.operand === "-" && !this.previousNumber && this.currentNumber) {
-                    this.currentNumber = -this.currentNumber
+                    this.currentNumber = -(Number(this.currentNumber)).toString()
                 }
                 if (this.previousNumber && this.currentNumber) {
                     this.history.push(this.previousNumber)
@@ -63,6 +76,11 @@ export class Calculator {
                 }
                 this.operand = op
                 this.currentNumber = "0"
+                if(
+                    this.operand === "*" && this.currentNumber === "0"
+                ){
+                    return null
+                }
             } else {
                 this.previousNumber = this.currentNumber
                 this.currentNumber = "0"
@@ -123,4 +141,18 @@ export class Calculator {
             this.clearedCount = 0
         }
     }
+    backspace() {
+        // 1. if we are at 0 and someone presses backspace -> do nothing
+        // 2. if we are at currentNumber.length === 1, go to 0
+        // 3. if we are at currentNumber.length > 1, splice from current down 1
+        if (this.currentNumber && this.len === 1) {
+            this.currentNumber = "0"
+        }
+        if (this.currentNumber && this.len > 1) {
+            this.currentNumber = this.currentNumber.slice(0, this.len)
+        }
+    }
+
 }
+
+let calc = new Calculator()

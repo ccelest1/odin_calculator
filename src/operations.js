@@ -29,13 +29,16 @@ function calcOperations(num1, num2, method) {
 
 function calcFactorial(num) {
     function returnCalc(current, past) {
+        if (current === 0) {
+            return 0
+        }
         if (past === 0) {
             return current
         }
 
         return returnCalc(current * past, past - 1)
     }
-    return returnCalc(num, num-1)
+    return returnCalc(num, num - 1)
 }
 
 const add_test = JSON.stringify(calcOperations(
@@ -53,6 +56,7 @@ const multiply_test = JSON.stringify(calcOperations(
 const power_test = JSON.stringify(calcOperations(
     4, 2, "**"
 )) == 16
+console.log(calcFactorial(6))
 const factorial_test = JSON.stringify(calcFactorial(
     6
 )) == 720

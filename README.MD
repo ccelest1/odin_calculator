@@ -1,5 +1,7 @@
 # Finishing Odin Project - Calculator
 
+- [Deployed](https://ccelest1.github.io/odin_calculator/)
+
 ## 1 - Operations
 - Calculator contains functions for basic math operators found on avg calculator:
     - `add(), subtract(), multiply(), divide()` [x]

@@ -1,5 +1,11 @@
 # Finishing Odin Project - Calculator
 
+# IN PROGRESS
+- Adding = command to gain result
+- Button Functionality
+- Fix 2nd Media Query Transition CSS
+- Fix calculations and associated bugs
+
 ## 1 - Operations
 - Calculator contains functions for basic math operators found on avg calculator:
     - `add(), subtract(), multiply(), divide()` [x]

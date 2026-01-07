@@ -78,7 +78,6 @@ export class Calculator {
                 this.currentNumber,
                 this.operand
             )
-            console.log(calculation)
             this.history.push(
                 `= ${calculation}`
             )

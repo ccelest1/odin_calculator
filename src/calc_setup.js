@@ -98,13 +98,11 @@ document.addEventListener('keydown', e => {
     if (isTyping) {
         if (e.key >= '0' && e.key <= '9') {
             calc.handleNumber(e.key)
-            console.log(calc)
         }
         if (e.key === ".") {
             calc.handleDecimal(e.key)
         }
         if (ops.includes(e.key)) {
-            console.log(calc)
             calc.handleOperand(e.key)
         }
         displayInput.textContent = calc.currentNumber
@@ -132,7 +130,6 @@ main_controls.addEventListener('click', e => {
     let indvButton = Array.from(target.classList)[1]
     switch (indvButton) {
         case ('button--random-color-change'):
-            console.log('here')
             break
         default:
             return

@@ -1,6 +1,9 @@
 # Finishing Odin Project - Calculator
 
-# IN PROGRESS
+## Deployment
+- [Deployed](https://ccelest1.github.io/odin_calculator/)
+
+### IN PROGRESS
 - Adding = command to gain result
 - Button Functionality
 - Fix 2nd Media Query Transition CSS

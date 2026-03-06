@@ -1,7 +1,7 @@
 # Finishing Odin Project - Calculator
 
 ## Deployment
-- [Deployed] @ (https://ccelest1.github.io/odin_calculator/)
+- [Deployed](https://ccelest1.github.io/odin_calculator/)
 - Running locally: In root, `python -m http.server`
 
 ### IN PROGRESS

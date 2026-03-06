@@ -10,6 +10,11 @@
 - Fix 2nd Media Query Transition CSS
 - Fix calculations and associated bugs
 
+# STILL TO IMPLEMENT
+- Functions populate the display when clicking digit buttons
+    * Store display content in variable [ ]
+
+
 ## 1 - Operations
 - Calculator contains functions for basic math operators found on avg calculator:
     - `add(), subtract(), multiply(), divide()` [x]
@@ -17,14 +22,13 @@
     * Consists of a number, operator, other number `3+5`
     * Three variables created for each operation (display update)
         - firstNumber, operand, secondNumber
-- New function `operate`: takes in operator, 2 numbers and calls above functions on numbers [ ]
+- New function `operate`: takes in operator, 2 numbers and calls above functions on numbers [x]
 
 ## 2 - HTML
 - Buttons for each digit and operator (include `=`)
-    * Also include a calculator display -> fill with numbers so it looks correct [ ]
-    * Add clear button [ ]
-- Functions populate the display when clicking digit buttons
-    * Store display content in variable [ ]
+    * Also include a calculator display -> fill with numbers so it looks correct [x]
+    * Add clear button [x]
+
 
 ## 3 - Calculator Working
 - Store first and second numbers input by user -> `operate()` when user presses (`=`)

@@ -38,58 +38,64 @@ const calc = new Calculator()
 //
 
 function initialize_calc() {
-    // Create number buttons (0-9)
-    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-    const rows = [
-        [7, 8, 9],
-        [4, 5, 6],
-        [1, 2, 3],
-        [0, '.']
-    ]
+    displayInput.style.display = 'flex'
+    displayInput.style.alignItems = 'center'
+    displayInput.style.justifyContent = 'flex-end'
+    displayInput.style.paddingRight = '5px'
+    displayInput.innerText = calc.currentNumber
 
-    rows.forEach(row => {
-        let numberRow = document.createElement('div')
-        numberRow.classList.add('number__row')
-        row.forEach(num => {
-            let numberNode = document.createElement('button')
-            numberNode.innerText = num
-            numberNode.classList.add('button__number')
-            numberRow.appendChild(numberNode)
-        })
-        numbersDiv.appendChild(numberRow)
-    })
+    let numCount = 0
+    while (numCount < 10) {
+        for (let i = 0; i <= 3; i++) {
+            let numberRow = document.createElement('div')
+            numberRow.classList.add('number__row')
+            numbersDiv.append(numberRow)
+            for (let j = i; j <= 3; j++) {
+                let numberNode = document.createElement('button')
+                numberNode.innerText = `${numCount}`
+                numberNode.classList.add('button__number')
+                numberRow.append(numberNode)
+                numCount += 1
+            }
+        }
+    }
+
+
+    let opsCount = 0
+    let operations = ["*", "-", "+", "/"]
+    while (opsCount < 4) {
+        for (let i = 0; i < 2; i++) {
+            let opsRow = document.createElement('div')
+            opsRow.classList.add('ops__row')
+            opsDiv.append(opsRow)
+            for (let j = 0; j <= 1; j++) {
+                let opsNode = document.createElement('button')
+                opsNode.innerText = `${operations[opsCount]}`
+                opsNode.classList.add('button__ops')
+                opsRow.append(opsNode)
+                opsCount += 1
+            }
+        }
+    }
+
+}
+initialize_calc()
+
+function userInteractions() {
+
 }
 
 
-let opsCount = 0
-let operations = [
-    ["*", "-"], ["+", "/"]
-]
-operations.forEach(row => {
-    let opsRow = document.createElement('div')
-    opsRow.classList.add('ops__row')
-    row.forEach(op => {
-        let opsNode = document.createElement('button')
-        opsNode.innerText = op
-        opsNode.classList.add('button__ops')
-        opsRow.appendChild(opsNode)
-    })
-    opsDiv.appendChild(opsRow)
-})
-let equal_button = document.createElement('button')
-equal_button.innerText = "="
-equal_button.classList.add('button__equal__ops')
-opsDiv.appendChild(equal_button)
-
-initialize_calc()
-
-let isTyping = true;
-const ops = ["*", "**", "-", "+", "/"]
-
-document.addEventListener('keydown', e => {
+let isTyping = false;
+function calcDisplay(e) {
+    displayInput.focus()
     isTyping = true
+
+}
+document.addEventListener('keydown', e => {
+    const ops = ["*", "**", "-", "+", "/"]
+
     if (isTyping) {
-        console.log(e.key)
         if (e.key >= '0' && e.key <= '9') {
             calc.handleNumber(e.key)
         }
@@ -97,68 +103,25 @@ document.addEventListener('keydown', e => {
             calc.handleDecimal(e.key)
         }
         if (ops.includes(e.key)) {
-            console.log(e.key)
             calc.handleOperand(e.key)
         }
-        if (e.key === "=") {
-            calc.handleEquals()
-        }
         displayInput.textContent = calc.currentNumber
-        if (e.key === 'Backspace') {
-            calc.handleDelete()
-            displayInput.textContent = calc.currentNumber
-        }
-
     }
 })
 
-calculatorDiv.addEventListener('click', e => {
+document.addEventListener('click', e => {
     let target = e.target
     let node = Array.from(target.classList)[1]
-    isTyping = true
+    if (!displayInput.contains(target)) {
+        isTyping = false
+    }
     switch (node) {
         case ('button--clear'):
             displayInput.textContent = '0'
-            isTyping = false
             calc.clear()
             break
-        default:
-            handleButtons(e)
     }
 })
-
-function randomizeCalcColor() {
-    let randomColor = Math.floor(Math.random() * 16777215).toString()
-    calculatorDiv.style.backgroundColor = '#' + randomColor
-}
-
-// 1. get value of button clicked on
-// 2. append to the display via .handleNumber()
-function handleButtons(e) {
-    let target = e.target
-    let content = target.textContent
-    if (
-        content >= 0 && content <= 9
-    ) {
-        calc.handleNumber(content)
-    }
-    if (
-        ops.includes(content)
-    ) {
-        calc.handleOperand(content)
-    }
-    if (
-        content === "="
-    ) {
-        calc.handleEquals()
-    }
-    if (
-        content === "."
-    ) {
-        calc.handleDecimal()
-    }
-    displayInput.textContent = calc.currentNumber
-}
 
 // 1. handle numbers, operands, enter, clear, decimal
 // 2. randomizing color of calculator div
@@ -167,7 +130,6 @@ main_controls.addEventListener('click', e => {
     let indvButton = Array.from(target.classList)[1]
     switch (indvButton) {
         case ('button--random-color-change'):
-            randomizeCalcColor()
             break
         default:
             return
@@ -179,6 +141,4 @@ main_controls.addEventListener('click', e => {
 // 3. only allow numbers to be entered
 // 5. handling decimals
 // 4. 'enter' submission
-displayInput.addEventListener('click', () => {
-    displayInput.focus()
-})
+displayInput.addEventListener('click', (e) => calcDisplay(e))

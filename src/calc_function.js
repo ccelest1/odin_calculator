@@ -8,12 +8,7 @@ export class Calculator {
         this.shouldResetScreen = false;
         this.history = history;
     }
-    handleDelete() {
-        this.currentNumber = this.currentNumber.slice(0, this.currentNumber.length - 1)
-        if (!this.currentNumber) {
-            this.currentNumber = "0"
-        }
-    }
+
     handleDecimal() {
         if (
             this.currentNumber.includes(".")
